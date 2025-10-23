@@ -45,7 +45,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-<<<<<<< HEAD
+
     document.addEventListener('DOMContentLoaded', function() {
         const menuItems = document.querySelectorAll('.menu-item[data-tab]');
         
@@ -70,8 +70,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         });
     });
-=======
->>>>>>> 7d1e624cb249ea1ba9ea826acd1ab3176debd6f7
 // Функция для открытия модального окна при клике на Личный кабинет
 document.addEventListener('DOMContentLoaded', function() {
     // Проверяем, есть ли сообщения об ошибках или успехе
@@ -81,8 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (errorMsg || successMsg) {
         openModal();
     }
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 7d1e624cb249ea1ba9ea826acd1ab3176debd6f7
+
+

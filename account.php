@@ -1,14 +1,6 @@
 <?php
-session_start();
-
-if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    header("Location: index.php");
-    exit();
-}
-
 include("include/header.php");
 
-<<<<<<< HEAD
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header("Location: index.php");
     exit();
@@ -17,9 +9,6 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
 
 function getInitials($name)
 {
-=======
-function getInitials($name) {
->>>>>>> 7d1e624cb249ea1ba9ea826acd1ab3176debd6f7
     $names = explode(' ', $name);
     $initials = '';
     foreach ($names as $n) {
@@ -30,12 +19,9 @@ function getInitials($name) {
 
 $username = $_SESSION['username'];
 $initials = getInitials($username);
-<<<<<<< HEAD
 
 // var_dump($_SESSION);
 // exit();
-=======
->>>>>>> 7d1e624cb249ea1ba9ea826acd1ab3176debd6f7
 ?>
 
 <section class="account-container">
@@ -52,7 +38,6 @@ $initials = getInitials($username);
             </div>
             <hr>
             <div class="account-menu">
-<<<<<<< HEAD
                 <a href="" class="menu-item active" data-tab="overview"><i class="fa-solid fa-chart-simple"></i>
                     Обзор</a>
                 <a href="" class="menu-item" data-tab="orders"><i class="fa-solid fa-boxes-stacked"></i> Мои заказы</a>
@@ -65,17 +50,6 @@ $initials = getInitials($username);
                 <a href="" class="menu-item" data-tab="help"><i class="fa-solid fa-question"></i> Помощь</a>
                 <a href="logout.php" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Выйти</a>
-                    
-=======
-                <a href="" class="menu-item active"><i class="fa-solid fa-chart-simple"></i> Обзор</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-boxes-stacked"></i> Мои заказы</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-clock-rotate-left"></i> История заказов</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-credit-card"></i> Оплата и счета</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-address-card"></i> Профиль</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-gear"></i> Настройки</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-question"></i> Помощь</a>
-                <a href="logout.php" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти</a>
->>>>>>> 7d1e624cb249ea1ba9ea826acd1ab3176debd6f7
             </div>
         </div>
     </aside>
