@@ -1,15 +1,36 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header("Location: index.php");
+    exit();
+}
+
 include("include/header.php");
+
+function getInitials($name) {
+    $names = explode(' ', $name);
+    $initials = '';
+    foreach ($names as $n) {
+        $initials .= strtoupper(substr($n, 0, 1));
+    }
+    return $initials;
+}
+
+$username = $_SESSION['username'];
+$initials = getInitials($username);
 ?>
 
 <section class="account-container">
     <aside>
         <div>
             <div class="account-header">
-                <div class="account-image"></div>
+                <div class="account-image">
+                    <?php echo $initials; ?>
+                </div>
                 <div class="account-info">
-                    <p>Роман Лейпи</p>
-                    <p class="account-email">roman_minetchik@gmail.com</p>
+                    <p><?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                    <p class="account-email"><?php echo htmlspecialchars($_SESSION['Email']); ?></p>
                 </div>
             </div>
             <hr>
@@ -21,7 +42,7 @@ include("include/header.php");
                 <a href="" class="menu-item"><i class="fa-solid fa-address-card"></i> Профиль</a>
                 <a href="" class="menu-item"><i class="fa-solid fa-gear"></i> Настройки</a>
                 <a href="" class="menu-item"><i class="fa-solid fa-question"></i> Помощь</a>
-                <a href="" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти</a>
+                <a href="logout.php" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти</a>
             </div>
         </div>
     </aside>

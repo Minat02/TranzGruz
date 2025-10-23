@@ -44,3 +44,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         smoothScrollTo(targetId);
     });
 });
+
+// Функция для открытия модального окна при клике на Личный кабинет
+document.addEventListener('DOMContentLoaded', function() {
+    // Проверяем, есть ли сообщения об ошибках или успехе
+    const errorMsg = document.querySelector('[style*="color: red"]');
+    const successMsg = document.querySelector('[style*="color: green"]');
+    
+    if (errorMsg || successMsg) {
+        openModal();
+    }
+});
