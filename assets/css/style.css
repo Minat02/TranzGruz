@@ -442,15 +442,16 @@ a {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: #ddd;
+    background: #00CCBF;
     border-radius: 50%;
     flex-shrink: 0;
     font-weight: bold;
-    color: #666;
+    color: white;
+    font-size: 14px;
 }
 
 .account-image::before {
-    content: "RL";
+    content: none;
 }
 
 .account-info {

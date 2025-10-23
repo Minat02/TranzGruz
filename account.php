@@ -1,15 +1,39 @@
 <?php
 include("include/header.php");
+
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header("Location: index.php");
+    exit();
+}
+
+
+function getInitials($name)
+{
+    $names = explode(' ', $name);
+    $initials = '';
+    foreach ($names as $n) {
+        $initials .= strtoupper(substr($n, 0, 1));
+    }
+    return $initials;
+}
+
+$username = $_SESSION['username'];
+$initials = getInitials($username);
+
+// var_dump($_SESSION);
+// exit();
 ?>
 
 <section class="account-container">
     <aside>
         <div>
             <div class="account-header">
-                <div class="account-image"></div>
+                <div class="account-image">
+                    <?php echo $initials; ?>
+                </div>
                 <div class="account-info">
-                    <p>Роман Лейпи</p>
-                    <p class="account-email">roman_minetchik@gmail.com</p>
+                    <p><?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                    <p class="account-email"><?php echo htmlspecialchars($_SESSION['Email']); ?></p>
                 </div>
             </div>
             <hr>
@@ -24,8 +48,9 @@ include("include/header.php");
                 <a href="" class="menu-item" data-tab="profile"><i class="fa-solid fa-address-card"></i> Профиль</a>
                 <a href="" class="menu-item" data-tab="settings"><i class="fa-solid fa-gear"></i> Настройки</a>
                 <a href="" class="menu-item" data-tab="help"><i class="fa-solid fa-question"></i> Помощь</a>
-                <a href="" class="menu-item" data-tab="overview"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a href="logout.php" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Выйти</a>
+                    
             </div>
         </div>
     </aside>
@@ -85,7 +110,7 @@ include("include/header.php");
             2
         </div>
         <div class="tab-content" id="profile">
-                        <div class="setting">
+            <div class="setting">
                 <h2 class="profile-header">Настройки профиля</h2>
                 <div class="profile-main">
                     <div>
