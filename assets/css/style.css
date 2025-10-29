@@ -3,7 +3,8 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -582,8 +583,7 @@ aside {
 
 .account-table-header {
     color: #3F7C85;
-    text-align: center;
-    padding-top: 1rem;
+    padding:0 1rem 0 1rem;
     margin-top: 2%;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -593,46 +593,43 @@ aside {
         "wdth" 100;
 }
 
-.table {
+.account-table-cart {
+    width: 100%;
+    margin: 15px auto 15px auto;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    padding: 1rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
     border-radius: 5px;
+}
+
+.account-table-cart p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 .account-table {
     padding: 1rem;
 }
 
-table.iksweb {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    height: auto;
+.fa-solid.fa-circle-check {
+    color: green;
+    font-size: 2rem;
 }
 
-table.iksweb,
-table.iksweb td,
-table.iksweb th {
-    border: 1px solid #5959591e;
+.fa-solid.fa-truck-fast {
+    color: rgb(214, 214, 0);
+    font-size: 2rem;
 }
 
-table.iksweb td,
-table.iksweb th {
-    padding: 3px;
-    width: 30px;
-    height: 35px;
-}
-
-table.iksweb th {
-    background: #2222220c;
-    color: #3F7C85;
-    text-align: left;
-    font-weight: normal;
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
+.fa-solid.fa-box-open {
+    color: rgb(0, 132, 255);
+    font-size: 2rem;
 }
 
 .tab-content {
@@ -737,4 +734,37 @@ textarea {
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
-}    
+}
+
+table.iksweb{
+    padding: 0 1rem 0 0;
+	width: 100%;
+	border-collapse:collapse;
+	border-spacing:0;
+	height: auto;
+}
+table.iksweb,table.iksweb td, table.iksweb th {
+	border: 1px solid #595959;
+}
+table.iksweb td,table.iksweb th {
+	padding: 3px;
+	width: 30px;
+	height: 35px;
+}
+table.iksweb th {
+	    background: #4e6982;
+	color: #fff; 
+	font-weight: normal;
+}
+
+.history-inscription {
+        color: #3F7C85;
+    padding:0 1rem 0 1rem;
+    margin-top: 2%;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}

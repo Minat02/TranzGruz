@@ -6,22 +6,8 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     exit();
 }
 
-
-function getInitials($name)
-{
-    $names = explode(' ', $name);
-    $initials = '';
-    foreach ($names as $n) {
-        $initials .= strtoupper(substr($n, 0, 1));
-    }
-    return $initials;
-}
-
 $username = $_SESSION['username'];
 $initials = getInitials($username);
-
-// var_dump($_SESSION);
-// exit();
 ?>
 
 <section class="account-container">
@@ -73,42 +59,83 @@ $initials = getInitials($username);
             <div class="table">
                 <h2 class="account-table-header">Последние заказы</h2>
                 <div class="account-table">
-                    <table class="iksweb">
-                        <tr>
-                            <th>№ Заказа</th>
-                            <th>Маршрут</th>
-                            <th>Дата</th>
-                            <th>Статус</th>
-                            <th>Сумма</th>
-                        </tr>
-                        <tr>
-                            <td>#GT-2023-0456</td>
-                            <td>Москва - New York</td>
-                            <td>11.09.2001</td>
-                            <td>Доставлен</td>
-                            <td>1000</td>
-                        </tr>
-                        <tr>
-                            <td>#GT-2023-0456</td>
-                            <td>Москва - Киев</td>
-                            <td>24.02.2022</td>
-                            <td>В пути</td>
-                            <td>1000</td>
-                        </tr>
-                    </table>
+                    <div class="account-table-cart">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p>
+                            Заказ №2845 Доставлен<br>
+                            Сегодня, 10:15
+                        </p>
+                    </div>
+                    <div class="account-table-cart">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <p>
+                            Заказ №2845 В пути<br>
+                            Сегодня, 14:30
+                        </p>
+                    </div>
+                    <div class="account-table-cart">
+                        <i class="fa-solid fa-box-open"></i>
+                        <p>
+                            Заказ №2845 Принят в обработку<br>
+                            Вчера, 16:45
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="tab-content" id="orders">
-            0
+            <h1 class="account-main-header">Личный кабинет</h1>
         </div>
+
         <div class="tab-content" id="history">
-            1
+            <h1 class="account-main-header">Личный кабинет</h1>
+            <h2 class="history-inscription">История заказов</h2>
+            <table class="iksweb">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+</table>
         </div>
+
         <div class="tab-content" id="payment">
-            2
+            <h1 class="account-main-header">Личный кабинет</h1>
         </div>
+
         <div class="tab-content" id="profile">
+            <h1 class="account-main-header">Личный кабинет</h1>
             <div class="setting">
                 <h2 class="profile-header">Настройки профиля</h2>
                 <div class="profile-main">
@@ -130,11 +157,13 @@ $initials = getInitials($username);
                 <button class="profile-button">Сохранить изминения</button>
             </div>
         </div>
+
         <div class="tab-content" id="settings">
-            4
+            <h1 class="account-main-header">Личный кабинет</h1>
         </div>
+        
         <div class="tab-content" id="help">
-            5
+            <h1 class="account-main-header">Личный кабинет</h1>
         </div>
 </section>
 <?php
