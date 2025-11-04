@@ -80,5 +80,3 @@ document.addEventListener('DOMContentLoaded', function() {
         openModal();
     }
 });
-
-

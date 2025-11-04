@@ -583,7 +583,7 @@ aside {
 
 .account-table-header {
     color: #3F7C85;
-    padding:0 1rem 0 1rem;
+    padding: 0 1rem 0 1rem;
     margin-top: 2%;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -736,34 +736,312 @@ textarea {
         "wdth" 100;
 }
 
-table.iksweb{
+table.iksweb {
     padding: 0 1rem 0 0;
-	width: 100%;
-	border-collapse:collapse;
-	border-spacing:0;
-	height: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: auto;
 }
-table.iksweb,table.iksweb td, table.iksweb th {
-	border: 1px solid #595959;
-}
-table.iksweb td,table.iksweb th {
-	padding: 3px;
-	width: 30px;
-	height: 35px;
-}
+
+table.iksweb,
+table.iksweb td,
 table.iksweb th {
-	    background: #4e6982;
-	color: #fff; 
-	font-weight: normal;
+    border: 1px solid #69696927;
+}
+
+table.iksweb td,
+table.iksweb th {
+    padding: 3px;
+    width: 30px;
+    height: 35px;
+}
+
+table.iksweb th {
+    background: #4e6982;
+    color: #fff;
+    font-weight: normal;
 }
 
 .history-inscription {
-        color: #3F7C85;
-    padding:0 1rem 0 1rem;
+    color: #3F7C85;
+    padding: 0 1rem 1rem 0;
     margin-top: 2%;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.history-table-header {
+    background-color: #bebebe27;
+    color: #3F7C85;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.setting-inscription {
+    color: #3F7C85;
+    padding: 0 1rem 1rem 0;
+    margin-top: 2%;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.setting-table-cart {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto 15px auto;
+    justify-content: start;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.setting-table-header {
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.setting-table-inscription {
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.switch-button {
+    padding: 0.25rem;
+    margin-left: auto;
+    display: block;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #00CCBF;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #00CCBF;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+}
+
+.account-orders-header {
+    color: #3F7C85;
+    padding: 0 1rem 0 0;
+    margin-top: 2%;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.account-orders-cart {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.orders-cart {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    width: 90%;
+    margin: 15px auto 15px auto;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.delivery-status {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.status-bar {
+    display: flex;
+    position: relative;
+    border-radius: 8px;
+    padding: 20px 10px;
+    align-items: flex-start;
+}
+
+.status-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-label {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.2;
+    margin-top: 16px;
+}
+
+.progress-line {
+    position: absolute;
+    top: 26px;
+    left: 10%;
+    right: 10%;
+    height: 5px;
+    background: #e0e0e0;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 26px;
+    left: 10%;
+    width: 50%;
+    height: 5px;
+    background: #00CCBF;
+    z-index: 1;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Активный статус */
+.status-step.active .step-indicator {
+    background: #00CCBF;
+    border: 2px solid #00CCBF;
+}
+
+.status-step.active .step-label {
+    color: #00CCBF;
+    font-weight: bold;
+}
+
+/* Завершенный статус */
+.status-step.completed .step-indicator {
+    background: #00CCBF;
+}
+
+.status-step.completed .step-label {
+    color: #00CCBF;
+}
+
+.orders-cart-header {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 15px auto 15px auto;
+}
+
+.orders-cart-inscription {
+    font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.orders-cart-header-left {
+    font-size: 1.25rem;
+        font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.orders-cart-header-right {
+    text-align: center;
+    padding:  0.25rem;
+    border-radius: 20px;
+    max-width: 4rem;
+    background-color: rgba(255, 166, 0, 0.26);
+        font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
     font-style: normal;
     font-variation-settings:
         "wdth" 100;

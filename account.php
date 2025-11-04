@@ -86,48 +86,79 @@ $initials = getInitials($username);
 
         <div class="tab-content" id="orders">
             <h1 class="account-main-header">Личный кабинет</h1>
+            <h2 class="account-orders-header">Активные заказы</h2>
+            <div class="account-orders-cart">
+                <div class="orders-cart">
+                    <div>
+                        <div class="orders-cart-header">
+                            <p class="orders-cart-header-left">Заказ №7439</p>
+                            <div class="orders-cart-header-right">В пути</div>
+                        </div>
+                        <div class="orders-cart-inscription">
+                            <p><b>Маршрут:</b> Москва - Киев</p>
+                            <p><b>Груз:</b> Электроника, 150кг</p>
+                            <p><b>Ожидаемая доставка:</b> 15.12.2025</p>
+                        </div>
+                    </div>
+                    <div class="delivery-status">
+                        <div class="status-bar">
+                            <div class="progress-line"></div>
+                            <div class="progress-fill"></div>
+                            <div class="status-step completed">
+                                <div class="step-label">Принят</div>
+                            </div>
+                            <div class="status-step active">
+                                <div class="step-label">В пути</div>
+                            </div>
+                            <div class="status-step">
+                                <div class="step-label">Доставлен</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-content" id="history">
             <h1 class="account-main-header">Личный кабинет</h1>
             <h2 class="history-inscription">История заказов</h2>
             <table class="iksweb">
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-</table>
+                <tr class="history-table-header">
+                    <td>Номер заказа</td>
+                    <td>Дата</td>
+                    <td>Маршрут</td>
+                    <td>Стоимость</td>
+                    <td>Статус</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
 
         <div class="tab-content" id="payment">
@@ -160,8 +191,45 @@ $initials = getInitials($username);
 
         <div class="tab-content" id="settings">
             <h1 class="account-main-header">Личный кабинет</h1>
+            <h2 class="setting-inscription">Настройки аккаунта</h2>
+            <div class="setting-table-cart">
+                <div>
+                    <p class="setting-table-header">Уведомления по email</p>
+                    <p class="setting-table-inscription">Получать уведомления о статусе заказов</p>
+                </div>
+                <div class="switch-button">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="setting-table-cart">
+                <div>
+                    <p class="setting-table-header">SMS уведомления</p>
+                    <p class="setting-table-inscription">Получать SMS о доставке грузов</p>
+                </div>
+                <div class="switch-button">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="setting-table-cart">
+                <div>
+                    <p class="setting-table-header">Язык интерфейса</p>
+                    <p class="setting-table-inscription">Выберите предпочитаемый язык</p>
+                </div>
+                <div class="switch-button">
+                    <select id="pet-select">
+                        <option value="Russia">Русский</option>
+                        <option value="English">Английский</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        
+
         <div class="tab-content" id="help">
             <h1 class="account-main-header">Личный кабинет</h1>
         </div>
