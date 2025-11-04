@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($password === $user['password']) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['Email'] = $user['email'];
+                $_SESSION['Email'] = $user['Email'];
                 $_SESSION['logged_in'] = true;
 
                 header("Location: account.php");
@@ -33,16 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (isset($_POST['register'])) {
         $username = $conn->real_escape_string($_POST['username']);
-        $email = $conn->real_escape_string($_POST['email']);
+        $email = $conn->real_escape_string($_POST['Email']);
         $password = $conn->real_escape_string($_POST['password']);
 
         $check_sql = "SELECT id FROM users WHERE username = '$username' OR Email = '$email'";
         $check_result = $conn->query($check_sql);
 
         if ($check_result->num_rows > 0) {
-            $_SESSION['error'] = "Пользователь с таким именем или email уже существует";
+            $_SESSION['error'] = "Пользователь с таким именем или Email уже существует";
         } else {
-            $sql = "INSERT INTO users (username, Email, password) VALUES ('$username', '$email', '$password')";
+            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
             if ($conn->query($sql) === TRUE) {
                 $_SESSION['success'] = "Регистрация успешна! Теперь войдите в аккаунт.";
                 header("Location: index.php");

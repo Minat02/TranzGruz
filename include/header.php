@@ -71,7 +71,7 @@ include ("functions.php");
             <form id="registrationForm" method="post" action="auth.php">
                 <h2 class="modal-autreg">Регистрация</h2>
                 <input type="text" name="username" placeholder="Имя пользователя" required>
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="Email" name="Email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Пароль" required>
                 <button class="modal-button" type="submit" name="register">Зарегистрироваться</button>
                 <div class="switch-form">
