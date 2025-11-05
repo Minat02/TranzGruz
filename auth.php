@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($password === $user['password']) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['Email'] = $user['Email'];
+                $_SESSION['Email'] = $user['email'];
                 $_SESSION['logged_in'] = true;
 
                 header("Location: account.php");
