@@ -324,7 +324,7 @@ input {
     text-decoration: underline;
 }
 
-/* ОСНОВНЫЕ ИЗМЕНЕНИЯ ДЛЯ ФУТЕРА */
+
 main {
     flex: 1 0 auto;
 }
@@ -478,9 +478,10 @@ a {
 .account-container {
     display: flex;
     flex: 1;
+    height: 100vh;
 }
 
-/* ИСПРАВЛЕННОЕ БОКОВОЕ МЕНЮ */
+
 aside {
     width: 15%;
     background: #3F7C85;
@@ -510,6 +511,10 @@ aside {
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
+}
+
+.menu-item.exit {
+    color: #FF5F5D;
 }
 
 .menu-item {
@@ -583,7 +588,8 @@ aside {
 
 .account-table-header {
     color: #3F7C85;
-    padding: 0 1rem 0 1rem;
+    padding: 0 1rem 0 0;
+    font-size: 1.5rem;
     margin-top: 2%;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -836,7 +842,13 @@ table.iksweb th {
     display: block;
 }
 
-/* The switch - the box around the slider */
+.switch-button select {
+    padding: 0.3rem;
+    background-color: white;
+    border: 2px solid #00000038;
+    border-radius: 5px;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -844,14 +856,12 @@ table.iksweb th {
     height: 34px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -890,7 +900,6 @@ input:checked+.slider:before {
     transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
@@ -907,6 +916,7 @@ select {
 .account-orders-header {
     color: #3F7C85;
     padding: 0 1rem 0 0;
+    font-size: 1.5rem;
     margin-top: 2%;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -923,13 +933,13 @@ select {
 
 .orders-cart {
     display: grid;
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     width: 90%;
     margin: 15px auto 15px auto;
     gap: 10px;
-    padding: 1rem;
+    padding: 1.25rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .delivery-status {
@@ -987,7 +997,7 @@ select {
     transition: width 0.3s ease;
 }
 
-/* Активный статус */
+
 .status-step.active .step-indicator {
     background: #00CCBF;
     border: 2px solid #00CCBF;
@@ -998,7 +1008,7 @@ select {
     font-weight: bold;
 }
 
-/* Завершенный статус */
+
 .status-step.completed .step-indicator {
     background: #00CCBF;
 }
@@ -1009,13 +1019,36 @@ select {
 
 .orders-cart-header {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin: 15px auto 15px auto;
+}
+
+.orders-cart-header-left {
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.orders-cart-header-right {
+    text-align: right;
+    padding: 0.5rem;
+    border-radius: 20px;
+    max-width: 4rem;
+    background-color: rgba(255, 166, 0, 0.26);
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    margin-left: auto;
 }
 
 .orders-cart-inscription {
     font-size: 1rem;
-        font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -1023,9 +1056,18 @@ select {
         "wdth" 100;
 }
 
-.orders-cart-header-left {
-    font-size: 1.25rem;
-        font-family: "Roboto", sans-serif;
+.setting-table-footer {
+    background-color: rgba(255, 0, 0, 0.055);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 0, 0, 0.144);
+}
+
+.setting-table-footer-inscription {
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
@@ -1033,15 +1075,474 @@ select {
         "wdth" 100;
 }
 
-.orders-cart-header-right {
-    text-align: center;
-    padding:  0.25rem;
-    border-radius: 20px;
-    max-width: 4rem;
-    background-color: rgba(255, 166, 0, 0.26);
-        font-family: "Roboto", sans-serif;
+.setting-table-footer-b1 {
+    background-color: red;
+    color: white;
+    border: none;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.setting-table-footer-b2 {
+    background-color: orange;
+    color: white;
+    border: none;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.account-payment-cart {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.payment-cart {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    width: 90%;
+    margin: 15px auto 15px auto;
+    gap: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+}
+
+.payment-cart p {
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.payment-cart button {
+    background: #00CCBF;
+    width: 8rem;
+    color: white;
+    border: none;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.account-history-cart {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto 15px auto;
+    width: 96%;
+    border-radius: 8px;
+    justify-content: start;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.account-payment-header {
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.account-payment-inscription {
+    padding-top: 0.5rem;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.account-payment {
+    justify-content: end;
+    padding: 0.25rem;
+    margin-left: auto;
+    display: block;
+}
+
+.account-payment-inscription-p {
+    padding: 0.25rem;
+    border-radius: 10px;
+    background-color: rgba(0, 177, 0, 0.432);
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.admin-header {
+    color: #3F7C85;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.admin-header-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 1fr);
+    width: 50%;
+    height: 130px;
+    margin: 30px auto 15px auto;
+    gap: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+}
+
+.admin-header-grid p {
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.admin-header-grid select {
+    padding: 0.3rem;
+    margin-top: 7px;
+    height: 80%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.admin-header-grid input {
+    height: 75%;
+}
+
+.apply {
+    color: white;
+    background-color: #00CCBF;
+    padding: 0.5rem;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.reset {
+    color: white;
+    background-color: #666;
+    padding: 0.5rem;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.admin-header-a {
+    display: flex;
+    gap: 10px;
+}
+
+table.orders {
+    margin-top: 40px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    height: auto;
+}
+
+table.orders td,
+table.orders th {
+    padding: 3px;
+    width: 30px;
+    height: 35px;
+    text-align: center;
+}
+
+table.orders td {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+
+table.orders td:first-child {
+    border-left: 1px solid #ddd;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+table.orders td:last-child {
+    border-right: 1px solid #ddd;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+.td-header {
+    border-bottom: 1px solid #3F7C85 !important;
+    color: #3F7C85;
+}
+
+.fa-solid.fa-pen-to-square {
+    color: orange;
+    margin-right: 8px;
+}
+
+.fa-solid.fa-trash {
+    color: red;
+}
+
+.status {
+    align-items: center;
+    justify-content: center;
+}
+
+.On-the-way {
+    background-color: rgba(0, 255, 255, 0.3) !important;
+    border-radius: 10px;
+    text-align: center;
+    padding: 6px 18px 6px 18px;
+}
+
+.Delivered {
+    background-color: rgba(0, 128, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    padding: 6px 18px 6px 18px;
+}
+
+.Waiting {
+    background-color: rgba(255, 255, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    padding: 6px 18px 6px 18px;
+}
+
+.transport-cars-cart {
+    display: grid;
+    grid-template-columns: repeat(3, 18%);
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+    gap: 10px;
+}
+
+.cars-cart {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.cars-cart i {
+    color: #3F7C85;
+    font-size: 2rem;
+    padding-top: 8px;
+}
+
+.cars-cart-name {
+    padding-top: 8px;
+    color: #3F7C85;
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.cars-cart-kg {
+    padding-top: 8px;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.cars-cart-status-available {
+    color: green;
+    padding: 8px;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.cars-cart-status-busy {
+    color: red;
+    padding: 8px;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.cars-cart-add {
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #3F7C85;
+    border-radius: 5px;
+}
+
+.cars-cart-add i {
+    color: #3F7C85;
+    font-size: 2rem;
+    padding-top: 8px;
+}
+
+.cars-cart-add-add {
+    padding-top: 8px;
+    color: #3F7C85;
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.cars-cart-add-new {
+    padding: 8px;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.services-cart {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto 15px auto;
+    justify-content: start;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.services-header {
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.services-inscription {
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.services-change {
+    padding: 0.25rem;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.services-price {
+    color: #3F7C85;
+    margin: 0;
+    padding-right: 10px;
+}
+
+
+
+
+.services-cart-add {
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #3F7C85;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.services-cart-add i {
+    color: #3F7C85;
+    font-size: 2rem;
+    padding-top: 8px;
+}
+
+.services-cart-add-new {
+    padding: 8px;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
     font-style: normal;
     font-variation-settings:
         "wdth" 100;

@@ -34,7 +34,7 @@ $initials = getInitials($username);
                 <a href="" class="menu-item" data-tab="profile"><i class="fa-solid fa-address-card"></i> Профиль</a>
                 <a href="" class="menu-item" data-tab="settings"><i class="fa-solid fa-gear"></i> Настройки</a>
                 <a href="" class="menu-item" data-tab="help"><i class="fa-solid fa-question"></i> Помощь</a>
-                <a href="logout.php" class="menu-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a href="logout.php" class="menu-item exit"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Выйти</a>
             </div>
         </div>
@@ -163,6 +163,30 @@ $initials = getInitials($username);
 
         <div class="tab-content" id="payment">
             <h1 class="account-main-header">Личный кабинет</h1>
+            <h2 class="account-table-header">Способы оплаты</h2>
+            <div class="account-payment-cart">
+                <div class="payment-cart">
+                    <p><i class="fa-solid fa-credit-card"></i> Банковская карта</p>
+                    <p>**** **** **** 1234</p>
+                    <button>Изменить</button>
+                </div>
+                <div class="payment-cart">
+                    <p><i class="fa-solid fa-building-columns"></i> Банковский перевод</p>
+                    <p>Т-Банк</p>
+                    <button>Изменить</button>
+                </div>
+            </div>
+            <h2 class="account-table-header">История платежей</h2>
+            <div class="account-history-cart">
+                <div>
+                    <p class="account-payment-header">Оплата заказа №1234</p>
+                    <p class="account-payment-inscription">10.10.2025</p>
+                </div>
+                <div class="account-payment">
+                    <p class="account-payment-header">15 000 ₽</p>
+                    <p class="account-payment-inscription-p">Оплачено</p>
+                </div>
+            </div>
         </div>
 
         <div class="tab-content" id="profile">
@@ -228,12 +252,17 @@ $initials = getInitials($username);
                     </select>
                 </div>
             </div>
+            <div class="setting-table-footer">
+                <p class="setting-table-footer-inscription">Опасная зона</p>
+                <div>
+                    <button class="setting-table-footer-b1">Удалить аккаунт</button>
+                    <button class="setting-table-footer-b2">Архивировать данные</button>
+                </div>
+            </div>
         </div>
 
         <div class="tab-content" id="help">
             <h1 class="account-main-header">Личный кабинет</h1>
         </div>
+    </div>
 </section>
-<?php
-include("include/footer.php");
-?>
