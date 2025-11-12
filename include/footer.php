@@ -33,7 +33,7 @@
             <a href="#" class="footer-link"><i class="bi bi-whatsapp whatsapp"></i></a>
         </div>
     </div>
-    <hr>
+    <hr class="footer-hr">
     <div class="footer-bottom">
         <p>&copy; <?= htmlspecialchars(date('Y')) ?> ГрузТрансЛогистик. Все права защищены.</p>
     </div>

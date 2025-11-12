@@ -70,6 +70,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         });
     });
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const transition = document.querySelectorAll('.transition[data-tab]');
+        
+        transition.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Убираем активный класс у всех пунктов меню
+                transition.forEach(i => i.classList.remove('active'));
+                
+                // Добавляем активный класс к текущему пункту
+                this.classList.add('active');
+                
+                // Скрываем все вкладки
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Показываем выбранную вкладку
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    });
 // Функция для открытия модального окна при клике на Личный кабинет
 document.addEventListener('DOMContentLoaded', function() {
     // Проверяем, есть ли сообщения об ошибках или успехе

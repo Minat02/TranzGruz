@@ -22,11 +22,12 @@ $initials = getInitials($username);
                     <p class="account-email"><?php echo htmlspecialchars($_SESSION['Email']); ?></p>
                 </div>
             </div>
-            <hr>
+            <hr class="order-hr">
             <div class="account-menu">
                 <a href="" class="menu-item active" data-tab="overview"><i class="fa-solid fa-chart-simple"></i>
                     Обзор</a>
                 <a href="" class="menu-item" data-tab="orders"><i class="fa-solid fa-boxes-stacked"></i> Мои заказы</a>
+                <a href="" class="menu-item" data-tab="new_order"><i class="fa-solid fa-plus"></i> Новый заказ</a>
                 <a href="" class="menu-item" data-tab="history"><i class="fa-solid fa-clock-rotate-left"></i> История
                     заказов</a>
                 <a href="" class="menu-item" data-tab="payment"><i class="fa-solid fa-credit-card"></i> Оплата и
@@ -114,6 +115,69 @@ $initials = getInitials($username);
                                 <div class="step-label">Доставлен</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="new_order">
+            <div class="tab active" id="address">
+                <div class="address">
+                    <p class="address-header">Адресс отправления</p>
+                    <div class="filling-cart">
+                        <label for="country">Страна</label>
+                        <label for="city">Город</label>
+                        <label for="address">Адрес</label>
+                        <label for="postal_code">Почтовый индекс</label>
+                        <input type="text" id="country">
+                        <input type="text" id="city">
+                        <input type="text" id="address">
+                        <input type="text" id="postal_code">
+                    </div>
+                    <hr class="order-hr">
+                    <p class="address-header-2">Адресс назначителя</p>
+                    <div class="filling-cart">
+                        <label for="country">Страна</label>
+                        <label for="city">Город</label>
+                        <label for="address">Адрес</label>
+                        <label for="postal_code">Почтовый индекс</label>
+                        <input type="text" id="country">
+                        <input type="text" id="city">
+                        <input type="text" id="address">
+                        <input type="text" id="postal_code">
+                    </div>
+                    <hr class="order-hr">
+                    <div class="new_order_a">
+                        <a href="" class="transition further" data-tab="cargo"> Далее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab" id="cargo">
+                <div class="cargo">
+                    2
+                    <div class="new_order_a">
+                        <a href="" class="transition back" data-tab="address"> Назад</a>
+                        <a href="" class="transition further" data-tab="service"> Далее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab" id="service">
+                <div class="service">
+                    3
+                    <div class="new_order_a">
+                        <a href="" class="transition back" data-tab="cargo"> Назад</a>
+                        <a href="" class="transition further" data-tab="order"> Далее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab" id="order">
+                <div class="order">
+                    4
+                    <div class="new_order_a">
+                        <a href="" class="transition back" data-tab="service"> Назад</a>
+                        <a href="" class="transition last" data-tab="order"> Оформление заказа</a>
                     </div>
                 </div>
             </div>
