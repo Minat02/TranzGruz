@@ -124,9 +124,9 @@ $initials = getInitials($username);
                 <div class="address">
                     <p class="address-header">Адресс отправления</p>
                     <div class="filling-cart">
-                        <label for="country">Страна</label>
-                        <label for="city">Город</label>
-                        <label for="address">Адрес</label>
+                        <label for="country">Страна*</label>
+                        <label for="city">Город*</label>
+                        <label for="address">Адрес*</label>
                         <label for="postal_code">Почтовый индекс</label>
                         <input type="text" id="country">
                         <input type="text" id="city">
@@ -136,9 +136,9 @@ $initials = getInitials($username);
                     <hr class="order-hr">
                     <p class="address-header-2">Адресс назначителя</p>
                     <div class="filling-cart">
-                        <label for="country">Страна</label>
-                        <label for="city">Город</label>
-                        <label for="address">Адрес</label>
+                        <label for="country">Страна*</label>
+                        <label for="city">Город*</label>
+                        <label for="address">Адрес*</label>
                         <label for="postal_code">Почтовый индекс</label>
                         <input type="text" id="country">
                         <input type="text" id="city">
@@ -154,10 +154,88 @@ $initials = getInitials($username);
 
             <div class="tab" id="cargo">
                 <div class="cargo">
-                    2
-                    <div class="new_order_a">
-                        <a href="" class="transition back" data-tab="address"> Назад</a>
-                        <a href="" class="transition further" data-tab="service"> Далее</a>
+                    <div class="address">
+                        <p class="address-header">Адресс отправления</p>
+                        <div class="filling-cart">
+                            <label for="country">Тип груза*</label>
+                            <label for="city">Вес (кг)*</label>
+                            <label for="address">Объём (м²)</label>
+                            <label for="postal_code">Стоимость груза (₽)</label>
+                            <div class="type">
+                                <select id="pet-select">
+                                    <option value="type">Выберите тип груза</option>
+                                    <option value="Electronics">Электроника</option>
+                                    <option value="Furniture">Мебель</option>
+                                    <option value="Cloth">Одежда</option>
+                                    <option value="Documents">Документы</option>
+                                    <option value="Products">Продукты питания</option>
+                                    <option value="Equipment">Оборудование</option>
+                                    <option value="Construction_materials">Строительные материалы</option>
+                                    <option value="Other">Другое</option>
+                                </select>
+                            </div>
+                            <input type="text" id="city">
+                            <input type="text" id="address">
+                            <input type="text" id="postal_code">
+                        </div>
+                        <h3 class="cargo-text">Описание груза*</h3>
+                        <textarea class="cargo-textarea" name="" id=""></textarea>
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <p>Хрупкий груз (требует особой осторожности)</p>
+                        </div>
+                        <hr class="cargo-hr">
+                        <p class="choice-car">Выбор транспорта</p>
+                        <div class="choice-car-cart">
+                            <div class="car-cart">
+                                <i class="fa-solid fa-truck"></i>
+                                <div>
+                                    <p class="car-cart-name">Газель</p>
+                                    <p class="car-cart-data">До 1,500 кг · 25₽/км</p>
+                                    <p class="car-cart-description">Идеальна для мелких грузов перевозов</p>
+                                </div>
+                                <div class="car-cart-price">
+                                    <p>15,000₽</p>
+                                </div>
+                            </div>
+                            <div class="car-cart">
+                                <i class="fa-solid fa-truck-moving"></i>
+                                <div>
+                                    <p class="car-cart-name">Бычок</p>
+                                    <p class="car-cart-data">До 3,000 кг · 40₽/км</p>
+                                    <p class="car-cart-description">Для средних грузов и комерческих перевозок</p>
+                                </div>
+                                <div class="car-cart-price">
+                                    <p>24,000₽</p>
+                                </div>
+                            </div>
+                            <div class="car-cart">
+                                <i class="fa-solid fa-truck-front"></i>
+                                <div>
+                                    <p class="car-cart-name">Фура</p>
+                                    <p class="car-cart-data">До 20,000 кг · 50₽/км</p>
+                                    <p class="car-cart-description">Для крупных грузов и международных перевозок</p>
+                                </div>
+                                <div class="car-cart-price">
+                                    <p>45,000₽</p>
+                                </div>
+                            </div>
+                            <div class="car-cart">
+                                <i class="fa-regular fa-snowflake"></i>
+                                <div>
+                                    <p class="car-cart-name">Рефрижератор</p>
+                                    <p class="car-cart-data">До 15,000 кг · 75₽/км</p>
+                                    <p class="car-cart-description">Для темпиратурных грузов и продуктов</p>
+                                </div>
+                                <div class="car-cart-price">
+                                    <p>52,000₽</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new_order_a">
+                            <a href="" class="transition back" data-tab="address"> Назад</a>
+                            <a href="" class="transition further" data-tab="service"> Далее</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,8 +349,8 @@ $initials = getInitials($username);
                         <input type="text" id="company">
                     </div>
                 </div>
-                <h3 class="profile-header-textarea">Адрес</h3>
-                <textarea name="" id=""></textarea>
+                <h3 class="profile-header-text">Адрес</h3>
+                <textarea class="profile-header-textarea" name="" id=""></textarea>
                 <button class="profile-button">Сохранить изминения</button>
             </div>
         </div>

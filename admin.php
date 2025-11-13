@@ -21,7 +21,7 @@ $initials = getInitials($username);
                     <p>Администратор</p>
                 </div>
             </div>
-            <hr>
+            <hr class="order-hr">
             <div class="account-menu">
                 <a href="" class="menu-item active" data-tab="orders"><i class="fa-solid fa-boxes-stacked"></i>
                     Управление<br> заказами</a>

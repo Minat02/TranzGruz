@@ -289,10 +289,8 @@ form.active {
 }
 
 input {
-    width: 100%;
     padding: 12px;
     margin: 8px 0;
-    border: 1px solid black;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -713,7 +711,7 @@ label {
     box-sizing: border-box;
 }
 
-textarea {
+.profile-header-textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -723,7 +721,7 @@ textarea {
     box-sizing: border-box;
 }
 
-.profile-header-textarea {
+.profile-header-text {
     color: #3F7C85;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -1577,8 +1575,6 @@ table.orders td:last-child {
 }
 
 .transition.back {
-    display: flex;
-    justify-content: start;
     padding: 3px;
     background-color: gray;
     font-size: 1rem;
@@ -1591,8 +1587,6 @@ table.orders td:last-child {
 }
 
 .transition.further {
-    display: flex;
-    justify-content: end;
     padding: 3px;
     background-color: #00CCBF;
     font-size: 1rem;
@@ -1617,7 +1611,7 @@ table.orders td:last-child {
 }
 
 .address {
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
 }
@@ -1627,7 +1621,7 @@ table.orders td:last-child {
     font-size: 1.5rem;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
@@ -1666,11 +1660,145 @@ table.orders td:last-child {
     color: rgba(255, 255, 255, 0.151);
 }
 
+.type {
+    width: 95%;
+    padding-top: 0.5rem;
+}
 
+.type select {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: white;
+    border: 2px solid #00000017;
+    border-radius: 5px;
+}
 
+.cargo-textarea {
+    width: 99%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+}
 
-.cargo {}
+.cargo-text {
+    padding-top: 0.25rem;
+    color: #3F7C85;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
 
-.service {}
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto 15px auto;
+    justify-content: start;
+}
 
-.order {}
+.checkbox input {
+    width: 2%;
+    margin: 10px 0;
+}
+
+.checkbox p {
+    text-align: center;
+    padding-top: 0.5rem;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.cargo-hr {
+    width: 100%;
+    margin: 0 auto 0 auto;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.choice-car {
+    padding-top: 1rem;
+    color: #3F7C85;
+    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.choice-car-cart {
+
+}
+
+.car-cart {
+    margin: 15px auto 15px auto;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.car-cart i {
+    font-size: 2.5rem;
+    color: #358a8f;
+}
+
+.car-cart-name {
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.car-cart-data {
+    color: gray;
+    font-size: 0.75rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.car-cart-description {
+    color: gray;
+    font-size: 0.75rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.car-cart-price {
+    padding-top: 0.75rem;
+    margin-left: auto;
+  display: block;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
