@@ -259,6 +259,12 @@ body {
     position: relative;
 }
 
+.modal input {
+    width: 100%;
+    border: 1px solid #0000005d;
+    border-radius: 4px;
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -1737,10 +1743,6 @@ table.orders td:last-child {
         "wdth" 100;
 }
 
-.choice-car-cart {
-
-}
-
 .car-cart {
     margin: 15px auto 15px auto;
     display: flex;
@@ -1792,7 +1794,7 @@ table.orders td:last-child {
 .car-cart-price {
     padding-top: 0.75rem;
     margin-left: auto;
-  display: block;
+    display: block;
     color: #3F7C85;
     font-size: 1rem;
     font-family: "Roboto", sans-serif;
@@ -1801,4 +1803,194 @@ table.orders td:last-child {
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
+}
+
+.service-cart {
+    margin: 15px auto 15px auto;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+}
+
+.service-cart input {
+    height: 20px;
+    width: 2%;
+    margin: 10px 0;
+}
+
+.service-cart-name {
+    padding-top: 0.75rem;
+    margin-right: auto;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.service-cart-description {
+    padding-top: 0.75rem;
+    color: gray;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.service-cart-price {
+    padding-top: 0.75rem;
+    margin-left: auto;
+    color: #3F7C85;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.total-section {
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total-label {
+    color: #666;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.total-value {
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.final-total {
+    color: #3F7C85;
+    font-size: 18px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.order {
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
+}
+
+.order-cart {
+    border-radius: 8px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.order-cart-header {
+    padding: 0.5rem;
+    color: #3F7C85;
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.order-cart-description {
+    padding: 0.25rem;
+    color: gray;
+    font-size: 0.9rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.order-cart.end {
+    border: 1px solid #00CCBF;
+    background-color: #00ccbe1c;
+    border-radius: 8px;
+}
+
+.order-cart.end p {
+    padding: 0.5rem;
+    color: #3F7C85;
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.contact-information {
+    padding-top: 1rem;
+}
+
+.contact-information-checkbox {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto 15px auto;
+    justify-content: start;
+}
+
+.contact-information-checkbox input {
+    width: 2%;
+    margin: 10px 0;
+}
+
+.contact-information-checkbox p {
+    text-align: center;
+    padding-top: 0.5rem;
+    color: gray;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.contact-information-checkbox a {
+    color: #00CCBF;
+    text-decoration: underline !important;
+    text-decoration-color: #00CCBF;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
 }

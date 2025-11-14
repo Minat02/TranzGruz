@@ -242,17 +242,131 @@ $initials = getInitials($username);
 
             <div class="tab" id="service">
                 <div class="service">
-                    3
-                    <div class="new_order_a">
-                        <a href="" class="transition back" data-tab="cargo"> Назад</a>
-                        <a href="" class="transition further" data-tab="order"> Далее</a>
+                    <div class="address">
+                        <p class="address-header">Дополнительные услуги</p>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Погрузо-разгрузочные работы</p>
+                            <p class="service-cart-description">Помощь в загрузке и разгрузке груза</p>
+                            <p class="service-cart-price">1,500 ₽</p>
+                        </div>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Страхование груза</p>
+                            <p class="service-cart-description">Полное страхование груза на время перевозки</p>
+                            <p class="service-cart-price">500 ₽</p>
+                        </div>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Упаковка</p>
+                            <p class="service-cart-description">Профессиональная упаковка груза</p>
+                            <p class="service-cart-price">800 ₽</p>
+                        </div>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Срочная доставка</p>
+                            <p class="service-cart-description">Доставка в ускоренном режиме</p>
+                            <p class="service-cart-price">2,000 ₽</p>
+                        </div>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Таможнное оформление</p>
+                            <p class="service-cart-description">Оформление документов для международных перевозок</p>
+                            <p class="service-cart-price">3,000₽</p>
+                        </div>
+                        <div class="service-cart">
+                            <input type="checkbox">
+                            <p class="service-cart-name">Временное хранение</p>
+                            <p class="service-cart-description">Хранение груза на складе до 3 дней</p>
+                            <p class="service-cart-price">1,000 ₽</p>
+                        </div>
+                        <div class="total-section">
+                            <div class="total-row">
+                                <span class="total-label">Дополнительные услуги:</span>
+                                <span class="total-value">15,000 ₽</span>
+                            </div>
+
+                            <div class="total-row">
+                                <span class="total-label">Скидка:</span>
+                                <span class="total-value">0 ₽</span>
+                            </div>
+
+                            <div class="total-row final-total">
+                                <span>Итого:</span>
+                                <span>15,000 ₽</span>
+                            </div>
+                        </div>
+                        <div class="new_order_a">
+                            <a href="" class="transition back" data-tab="cargo"> Назад</a>
+                            <a href="" class="transition further" data-tab="order"> Далее</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="tab" id="order">
                 <div class="order">
-                    4
+                    <p class="address-header">Подтверждение заказа</p>
+                    <div class="order-cart">
+                        <p class="order-cart-header">Маршрут</p>
+                        <hr class="order-hr">
+                        <p class="order-cart-description">Отправление:</p>
+                        <p class="order-cart-description">Адрес:</p>
+                        <p class="order-cart-description">Назначение:</p>
+                        <p class="order-cart-description">Адрес:</p>
+                    </div>
+                    <div class="order-cart">
+                        <p class="order-cart-header">Груз</p>
+                        <hr class="order-hr">
+                        <p class="order-cart-description">Тип:</p>
+                        <p class="order-cart-description">Вес:</p>
+                        <p class="order-cart-description">Объём:</p>
+                        <p class="order-cart-description">Стоимость:</p>
+                        <p class="order-cart-description">Хрупкий:</p>
+                        <p class="order-cart-description">Описание:</p>
+                    </div>
+                    <div class="order-cart">
+                        <p class="order-cart-header">Транспорт</p>
+                        <hr class="order-hr">
+                        <p class="order-cart-description">Газель:</p>
+                    </div>
+                    <div class="order-cart">
+                        <p class="order-cart-header">Услуги</p>
+                        <hr class="order-hr">
+                        <p class="order-cart-description">Нет дополнительных услуг</p>
+                    </div>
+                    <div class="order-cart end">
+                        <p>Стоимость</p>
+                        <hr class="order-hr">
+                        <p>15,000 ₽</p>
+                    </div>
+
+
+
+                    <div class="contact-information">
+                        <p class="address-header">Контактная информация</p>
+                        <div class="filling-cart">
+                            <label for="face">Контактное лицо*</label>
+                            <label for="telephone">Телефон*</label>
+                            <label for="email">Email*</label>
+                            <label for="data">Желаемая дата доставки</label>
+                            <input type="text" id="face">
+                            <input type="text" id="telephone">
+                            <input type="text" id="email">
+                            <input id="date" type="date" value="дд.мм.гггг." />
+                        </div>
+                        <h3 class="cargo-text">Особые указание</h3>
+                        <textarea class="cargo-textarea" name="" id=""></textarea>
+                        <div class="contact-information-checkbox">
+                            <input type="checkbox">
+                            <p>Я согласен с <a href="#">условиями перевозки</a> и <a href="#">политической конфиденциальности</a>*</p>
+                        </div>
+                        <hr class="cargo-hr">
+                    </div>
+
+
+
+
                     <div class="new_order_a">
                         <a href="" class="transition back" data-tab="service"> Назад</a>
                         <a href="" class="transition last" data-tab="order"> Оформление заказа</a>
