@@ -34,7 +34,6 @@ $initials = getInitials($username);
                     счета</a>
                 <a href="" class="menu-item" data-tab="profile"><i class="fa-solid fa-address-card"></i> Профиль</a>
                 <a href="" class="menu-item" data-tab="settings"><i class="fa-solid fa-gear"></i> Настройки</a>
-                <a href="" class="menu-item" data-tab="help"><i class="fa-solid fa-question"></i> Помощь</a>
                 <a href="logout.php" class="menu-item exit"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Выйти</a>
             </div>
@@ -340,9 +339,6 @@ $initials = getInitials($username);
                         <hr class="order-hr">
                         <p>15,000 ₽</p>
                     </div>
-
-
-
                     <div class="contact-information">
                         <p class="address-header">Контактная информация</p>
                         <div class="filling-cart">
@@ -363,10 +359,6 @@ $initials = getInitials($username);
                         </div>
                         <hr class="cargo-hr">
                     </div>
-
-
-
-
                     <div class="new_order_a">
                         <a href="" class="transition back" data-tab="service"> Назад</a>
                         <a href="" class="transition last" data-tab="order"> Оформление заказа</a>
@@ -515,10 +507,6 @@ $initials = getInitials($username);
                     <button class="setting-table-footer-b2">Архивировать данные</button>
                 </div>
             </div>
-        </div>
-
-        <div class="tab-content" id="help">
-            <h1 class="account-main-header">Личный кабинет</h1>
         </div>
     </div>
 </section>
