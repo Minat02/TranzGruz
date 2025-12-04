@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("functions.php");
+require_once("db.php");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
