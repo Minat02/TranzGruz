@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("functions.php");
+require_once("db.php");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -80,3 +81,4 @@ include ("functions.php");
         </div>
     </div>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/fix_tabs.js"></script>

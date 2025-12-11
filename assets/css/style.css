@@ -280,14 +280,6 @@ body {
     color: #000;
 }
 
-form {
-    display: none;
-}
-
-form.active {
-    display: block;
-}
-
 .modal-autreg {
     margin-top: 0;
     margin-bottom: 20px;
