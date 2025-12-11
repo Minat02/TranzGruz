@@ -280,10 +280,6 @@ body {
     color: #000;
 }
 
-form {
-    display: none;
-}
-
 form.active {
     display: block;
 }
