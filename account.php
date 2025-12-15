@@ -355,10 +355,6 @@ $payments_sql->close();
                         </div>
                         <hr class="cargo-hr">
                     </div>
-                    <div class="new_order_a">
-                        <a href="" class="transition back" data-tab="service"> Назад</a>
-                        <a href="" class="transition last" data-tab="order"> Оформление заказа</a>
-                    </div>
                 </div>
                 </form>
             </div>

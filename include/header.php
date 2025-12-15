@@ -81,4 +81,3 @@ require_once("db.php");
         </div>
     </div>
 <script src="assets/js/script.js"></script>
-<script src="assets/js/fix_tabs.js"></script>

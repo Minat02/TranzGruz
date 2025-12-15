@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 25 2025 г., 16:55
+-- Время создания: Дек 15 2025 г., 15:46
 -- Версия сервера: 5.7.24
 -- Версия PHP: 8.3.1
 
@@ -31,25 +31,28 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'В ожидании',
   `from_address` varchar(255) NOT NULL,
   `to_address` varchar(255) NOT NULL,
   `total_price` int(11) NOT NULL,
   `create_date` date NOT NULL,
   `cargo_type` varchar(100) DEFAULT NULL,
-  `cargo_weight` decimal(10,2) DEFAULT NULL,
+  `cargo_weight` varchar(50) DEFAULT NULL,
+  `cargo_description` text,
+  `cargo_volume` varchar(50) DEFAULT NULL,
+  `cargo_value` int(11) DEFAULT '0',
   `contact_person` varchar(100) DEFAULT NULL,
   `contact_phone` varchar(20) DEFAULT NULL,
-  `gruz` varchar(100) NOT NULL,
-  `arrive_date` date DEFAULT NULL
+  `notes` text,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `orders`
 --
 
-INSERT INTO `orders` (`id`, `client_id`, `vehicle_id`, `status`, `from_address`, `to_address`, `total_price`, `create_date`, `cargo_type`, `cargo_weight`, `contact_person`, `contact_phone`, `gruz`, `arrive_date`) VALUES
-(1, 9, 1, 'В пути', 'Москва', 'Санкт-Петербург', 15000, '2025-11-04', NULL, NULL, NULL, NULL, '', NULL);
+INSERT INTO `orders` (`id`, `client_id`, `vehicle_id`, `status`, `from_address`, `to_address`, `total_price`, `create_date`, `cargo_type`, `cargo_weight`, `cargo_description`, `cargo_volume`, `cargo_value`, `contact_person`, `contact_phone`, `notes`, `updated_at`) VALUES
+(2, 1, 3, 'Доставлен', 'Питер', 'Москва', 23000, '2025-12-05', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-12-15 15:40:03');
 
 -- --------------------------------------------------------
 
@@ -58,20 +61,8 @@ INSERT INTO `orders` (`id`, `client_id`, `vehicle_id`, `status`, `from_address`,
 --
 
 CREATE TABLE `order_services` (
-  `order_id` int(4) NOT NULL,
-  `service_id` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `reviews`
---
-
-CREATE TABLE `reviews` (
-  `order_id` int(4) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `comment` varchar(50) NOT NULL
+  `order_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,23 +72,25 @@ CREATE TABLE `reviews` (
 --
 
 CREATE TABLE `services` (
-  `id` int(4) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `price` int(10) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text,
+  `price` int(11) NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Структура таблицы `status_history`
+-- Дамп данных таблицы `services`
 --
 
-CREATE TABLE `status_history` (
-  `order_id` int(4) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `comment` varchar(50) NOT NULL,
-  `create_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `services` (`id`, `name`, `description`, `price`, `is_active`) VALUES
+(1, 'Погрузо-разгрузочные работы', 'ымЦЫУМЦЫМыца', 1500, 1),
+(2, 'Страхование груза', NULL, 500, 1),
+(3, 'Упаковка', NULL, 800, 1),
+(4, 'Срочная доставка', NULL, 2000, 1),
+(5, 'Таможенное оформление', NULL, 3000, 1),
+(6, 'Временное хранение', NULL, 1000, 1),
+(7, 'долгосрочное хранение', 'drgberhbzbvzdrgze', 10000, 1);
 
 -- --------------------------------------------------------
 
@@ -106,20 +99,23 @@ CREATE TABLE `status_history` (
 --
 
 CREATE TABLE `users` (
-  `id` int(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
+  `phone` varchar(20) DEFAULT NULL,
+  `role` enum('user','admin') DEFAULT 'user',
+  `created_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `full_name`, `phone`) VALUES
-(9, 'Minat0', '123456', 'd9163772300@gmail.com', NULL, NULL);
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `full_name`, `phone`, `role`, `created_at`) VALUES
+(1, 'Дмитрий', 'Minat0_Sensei', 'd9163772300@gmail.com', 'Жабин Дмитрий Иванович', '89163772300', 'admin', NULL),
+(3, 'хуй', '12345', 'dima@gmail.com', NULL, '89163772300', 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,17 +125,23 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `full_name`, `phone`
 
 CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `capacity` int(11) NOT NULL,
-  `price` int(11) NOT NULL DEFAULT 0
+  `name` varchar(100) NOT NULL,
+  `capacity` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `status` enum('available','busy') DEFAULT 'available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `vehicles`
 --
 
-INSERT INTO `vehicles` (`id`, `name`, `capacity`, `price`) VALUES
-(1, 'Газель', 2, 15000);
+INSERT INTO `vehicles` (`id`, `name`, `capacity`, `price`, `status`) VALUES
+(1, 'Газель', '1500', 20000, 'available'),
+(2, 'Бычок', '3,000 ', 24000, 'available'),
+(3, 'Фура', '20,000 ', 45000, 'available'),
+(4, 'Рефрижератор', '15,000 ', 52000, 'available'),
+(7, 'Грузовик', '2000', 20000, 'available'),
+(8, 'Грузовик', '2000', 20000, 'available');
 
 --
 -- Индексы сохранённых таблиц
@@ -161,22 +163,10 @@ ALTER TABLE `order_services`
   ADD KEY `order_id` (`order_id`);
 
 --
--- Индексы таблицы `reviews`
---
-ALTER TABLE `reviews`
-  ADD KEY `order_id` (`order_id`);
-
---
 -- Индексы таблицы `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `status_history`
---
-ALTER TABLE `status_history`
-  ADD KEY `order_id` (`order_id`);
 
 --
 -- Индексы таблицы `users`
@@ -198,25 +188,25 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -227,26 +217,14 @@ ALTER TABLE `vehicles`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `order_services`
 --
 ALTER TABLE `order_services`
-  ADD CONSTRAINT `order_services_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_services_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `status_history`
---
-ALTER TABLE `status_history`
-  ADD CONSTRAINT `status_history_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_services_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`),
+  ADD CONSTRAINT `order_services_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

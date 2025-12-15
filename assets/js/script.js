@@ -100,7 +100,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         });
     });
-// Функция для открытия модального окна при клике на Личный кабинет
+
 document.addEventListener('DOMContentLoaded', function() {
     // Проверяем, есть ли сообщения об ошибках или успехе
     const errorMsg = document.querySelector('[style*="color: red"]');
@@ -110,12 +110,45 @@ document.addEventListener('DOMContentLoaded', function() {
         openModal();
     }
 
-    // Устанавливаем значение для поля даты
-    var dateControl = document.querySelector('input[type="date"]');
-    if (dateControl) {
-        dateControl.value = "2017-06-01";
-        console.log(dateControl.value); // prints "2017-06-01"
-        console.log(dateControl.valueAsNumber); // prints 1496275200000, a JavaScript timestamp (ms)
+    // Проверяем, что мы не на странице админки
+    const isAdminPage = window.location.pathname.includes('admin.php');
+    
+    // Устанавливаем минимальную дату для desired_date если элемент существует И мы не в админке
+    if (!isAdminPage) {
+        const dateControl = document.getElementById('desired_date');
+        if (dateControl) {
+            const today = new Date().toISOString().split('T')[0];
+            dateControl.setAttribute('min', today);
+            
+            // Устанавливаем значение только если поле пустое
+            if (!dateControl.value) {
+                // Устанавливаем дату на завтра
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateControl.value = tomorrow.toISOString().split('T')[0];
+            }
+        }
+    }
+
+    // Инициализация только если мы на странице account.php (не админка)
+    const isAccountPage = window.location.pathname.includes('account.php');
+    
+    if (isAccountPage) {
+        // Устанавливаем текущий шаг
+        window.currentStep = 1;
+        window.selectedVehicle = null;
+
+        // Добавляем обработчик изменения чекбоксов услуг для пересчета стоимости
+        document.querySelectorAll('input[name="services[]"]').forEach(service => {
+            service.addEventListener('change', calculateTotal);
+        });
+
+        // Устанавливаем минимальную дату для поля desired_date
+        const dateControl = document.getElementById('desired_date');
+        if (dateControl) {
+            const today = new Date().toISOString().split('T')[0];
+            dateControl.setAttribute('min', today);
+        }
     }
 });
 
@@ -135,8 +168,10 @@ function validateStep(step) {
             const requiredAddressFields = ['from_country', 'from_city', 'from_address', 'to_country', 'to_city', 'to_address'];
             requiredAddressFields.forEach(field => {
                 const element = document.querySelector(`input[name="${field}"]`);
-                if (!element.value.trim()) {
-                    element.style.borderColor = 'red';
+                if (!element || !element.value.trim()) {
+                    if (element) {
+                        element.style.borderColor = 'red';
+                    }
                     isValid = false;
                 } else {
                     element.style.borderColor = '';
@@ -149,22 +184,22 @@ function validateStep(step) {
             const cargoWeight = document.querySelector('input[name="cargo_weight"]');
             const cargoDescription = document.querySelector('textarea[name="cargo_description"]');
 
-            if (!cargoType.value) {
-                cargoType.style.borderColor = 'red';
+            if (!cargoType || !cargoType.value) {
+                if (cargoType) cargoType.style.borderColor = 'red';
                 isValid = false;
             } else {
                 cargoType.style.borderColor = '';
             }
 
-            if (!cargoWeight.value.trim()) {
-                cargoWeight.style.borderColor = 'red';
+            if (!cargoWeight || !cargoWeight.value.trim()) {
+                if (cargoWeight) cargoWeight.style.borderColor = 'red';
                 isValid = false;
             } else {
                 cargoWeight.style.borderColor = '';
             }
 
-            if (!cargoDescription.value.trim()) {
-                cargoDescription.style.borderColor = 'red';
+            if (!cargoDescription || !cargoDescription.value.trim()) {
+                if (cargoDescription) cargoDescription.style.borderColor = 'red';
                 isValid = false;
             } else {
                 cargoDescription.style.borderColor = '';
@@ -209,9 +244,12 @@ function prevStep(step) {
 }
 
 function selectVehicleFromCart(element) {
+    // Проверяем, существует ли элемент
+    if (!element) return;
+    
     // Убираем выделение у всех транспортных средств
     document.querySelectorAll('.car-cart').forEach(cart => {
-        cart.classList.remove('selected');
+        if (cart) cart.classList.remove('selected');
     });
 
     // Выделяем выбранное
@@ -221,13 +259,17 @@ function selectVehicleFromCart(element) {
     selectedVehicle = {
         id: element.getAttribute('data-vehicle-id'),
         name: element.getAttribute('data-vehicle-name'),
-        price: parseFloat(element.getAttribute('data-vehicle-price'))
+        price: parseFloat(element.getAttribute('data-vehicle-price')) || 0
     };
 
     // Заполняем скрытые поля
-    document.getElementById('vehicle_id').value = selectedVehicle.id;
-    document.getElementById('vehicle_name').value = selectedVehicle.name;
-    document.getElementById('vehicle_price').value = selectedVehicle.price;
+    const vehicleIdField = document.getElementById('vehicle_id');
+    const vehicleNameField = document.getElementById('vehicle_name');
+    const vehiclePriceField = document.getElementById('vehicle_price');
+    
+    if (vehicleIdField) vehicleIdField.value = selectedVehicle.id;
+    if (vehicleNameField) vehicleNameField.value = selectedVehicle.name;
+    if (vehiclePriceField) vehiclePriceField.value = selectedVehicle.price;
 
     // Пересчитываем итоговую стоимость
     calculateTotal();
@@ -238,51 +280,90 @@ function calculateTotal() {
     let servicesPrice = 0;
 
     // Суммируем стоимость выбранных услуг
-    document.querySelectorAll('input[name="services[]"]:checked').forEach(service => {
-        servicesPrice += parseFloat(service.getAttribute('data-price'));
-    });
+    const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]:checked');
+    if (serviceCheckboxes) {
+        serviceCheckboxes.forEach(service => {
+            const priceAttr = service.getAttribute('data-price');
+            servicesPrice += parseFloat(priceAttr) || 0;
+        });
+    }
 
     const totalPrice = vehiclePrice + servicesPrice;
 
     // Обновляем отображение цен
-    document.getElementById('vehicle-price-display').textContent = vehiclePrice.toLocaleString('ru-RU') + ' ₽';
-    document.getElementById('services-price-display').textContent = servicesPrice.toLocaleString('ru-RU') + ' ₽';
-    document.getElementById('total-price-display').textContent = totalPrice.toLocaleString('ru-RU') + ' ₽';
-    document.getElementById('total_price').value = totalPrice;
+    const vehicleDisplay = document.getElementById('vehicle-price-display');
+    const servicesDisplay = document.getElementById('services-price-display');
+    const totalDisplay = document.getElementById('total-price-display');
+    const totalInput = document.getElementById('total_price');
+    
+    if (vehicleDisplay) vehicleDisplay.textContent = vehiclePrice.toLocaleString('ru-RU') + ' ₽';
+    if (servicesDisplay) servicesDisplay.textContent = servicesPrice.toLocaleString('ru-RU') + ' ₽';
+    if (totalDisplay) totalDisplay.textContent = totalPrice.toLocaleString('ru-RU') + ' ₽';
+    if (totalInput) totalInput.value = totalPrice;
 }
 
 function updateOrderPreview() {
     // Обновляем превью маршрута
-    const fromAddress = `${document.querySelector('input[name="from_country"]').value}, ${document.querySelector('input[name="from_city"]').value}, ${document.querySelector('input[name="from_address"]').value}`;
-    const toAddress = `${document.querySelector('input[name="to_country"]').value}, ${document.querySelector('input[name="to_city"]').value}, ${document.querySelector('input[name="to_address"]').value}`;
+    const fromCountry = document.querySelector('input[name="from_country"]');
+    const fromCity = document.querySelector('input[name="from_city"]');
+    const fromAddress = document.querySelector('input[name="from_address"]');
+    const toCountry = document.querySelector('input[name="to_country"]');
+    const toCity = document.querySelector('input[name="to_city"]');
+    const toAddr = document.querySelector('input[name="to_address"]');
 
-    document.getElementById('preview_from').textContent = fromAddress;
-    document.getElementById('preview_to').textContent = toAddress;
+    const previewFrom = document.getElementById('preview_from');
+    const previewTo = document.getElementById('preview_to');
+    
+    if (previewFrom && fromCountry && fromCity && fromAddress) {
+        previewFrom.textContent = `${fromCountry.value}, ${fromCity.value}, ${fromAddress.value}`;
+    }
+    
+    if (previewTo && toCountry && toCity && toAddr) {
+        previewTo.textContent = `${toCountry.value}, ${toCity.value}, ${toAddr.value}`;
+    }
 
     // Обновляем превью груза
-    const cargoType = document.querySelector('select[name="cargo_type"]').value;
-    const cargoWeight = document.querySelector('input[name="cargo_weight"]').value;
-    const cargoDescription = document.querySelector('textarea[name="cargo_description"]').value;
-
-    document.getElementById('preview_cargo').innerHTML = `${cargoType}, ${cargoWeight} кг<br>${cargoDescription}`;
+    const cargoType = document.querySelector('select[name="cargo_type"]');
+    const cargoWeight = document.querySelector('input[name="cargo_weight"]');
+    const cargoDescription = document.querySelector('textarea[name="cargo_description"]');
+    const previewCargo = document.getElementById('preview_cargo');
+    
+    if (previewCargo && cargoType && cargoWeight && cargoDescription) {
+        previewCargo.innerHTML = `${cargoType.value}, ${cargoWeight.value} кг<br>${cargoDescription.value}`;
+    }
 
     // Обновляем превью транспорта
-    if (selectedVehicle) {
-        document.getElementById('preview_vehicle').textContent = selectedVehicle.name;
+    const previewVehicle = document.getElementById('preview_vehicle');
+    if (previewVehicle && selectedVehicle) {
+        previewVehicle.textContent = selectedVehicle.name;
     }
 
     // Обновляем превью услуг
     const selectedServices = [];
-    document.querySelectorAll('input[name="services[]"]:checked').forEach(service => {
-        const serviceName = service.closest('.service-cart').querySelector('.service-cart-name').textContent;
-        selectedServices.push(serviceName);
-    });
+    const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]:checked');
+    const previewServices = document.getElementById('preview_services');
+    
+    if (serviceCheckboxes && previewServices) {
+        serviceCheckboxes.forEach(service => {
+            const serviceCart = service.closest('.service-cart');
+            if (serviceCart) {
+                const serviceNameElement = serviceCart.querySelector('.service-cart-name');
+                if (serviceNameElement) {
+                    selectedServices.push(serviceNameElement.textContent);
+                }
+            }
+        });
 
-    document.getElementById('preview_services').textContent = selectedServices.length > 0 ? selectedServices.join(', ') : 'Услуги не выбраны';
+        previewServices.textContent = selectedServices.length > 0 ? selectedServices.join(', ') : 'Услуги не выбраны';
+    }
 
     // Обновляем превью стоимости
-    const totalPrice = document.getElementById('total_price').value;
-    document.getElementById('preview_total').textContent = parseFloat(totalPrice).toLocaleString('ru-RU') + ' ₽';
+    const totalPrice = document.getElementById('total_price');
+    const previewTotal = document.getElementById('preview_total');
+    
+    if (totalPrice && previewTotal) {
+        previewTotal.textContent = parseFloat(totalPrice.value || 0).toLocaleString('ru-RU') + ' ₽';
+    }
 }
 
 function resetOrderForm() {
@@ -290,27 +371,23 @@ function resetOrderForm() {
     window.selectedVehicle = null;
 
     // Скрываем все шаги кроме первого
-    document.querySelectorAll('.order-step').forEach(step => {
-        step.classList.remove('active');
-    });
-    document.getElementById('address_step').classList.add('active');
+    const orderSteps = document.querySelectorAll('.order-step');
+    if (orderSteps) {
+        orderSteps.forEach(step => {
+            step.classList.remove('active');
+        });
+    }
+    
+    const addressStep = document.getElementById('address_step');
+    if (addressStep) {
+        addressStep.classList.add('active');
+    }
 
     // Сбрасываем форму
-    document.getElementById('orderForm').reset();
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+        orderForm.reset();
+    }
+    
     calculateTotal();
 }
-
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    // Устанавливаем текущий шаг
-    currentStep = 1;
-
-    // Добавляем обработчик изменения чекбоксов услуг для пересчета стоимости
-    document.querySelectorAll('input[name="services[]"]').forEach(service => {
-        service.addEventListener('change', calculateTotal);
-    });
-
-    // Устанавливаем минимальную дату для поля desired_date
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('desired_date').setAttribute('min', today);
-});

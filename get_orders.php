@@ -16,7 +16,9 @@ $orders = [];
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $services_sql = "SELECT s.name FROM order_services os LEFT JOIN services s ON as.service_id = s.id WHERE os.order_id = '{$row['id']}'";
+        $services_sql = "SELECT s.name FROM order_services os 
+                LEFT JOIN services s ON os.service_id = s.id 
+                WHERE os.order_id = '{$row['id']}'";
         $services_result = $conn->query($services_sql);
         $services = [];
         while($service = $services_result->fetch_assoc()) {
@@ -26,6 +28,7 @@ if ($result->num_rows > 0) {
         $orders[] = $row;
     }
 }
-header('Content-type: application/json');
+header('Content-Type: application/json; charset=utf-8');
+header("Cache-Control: no-cache, must-revalidate");
 echo json_encode($orders);
 ?>
