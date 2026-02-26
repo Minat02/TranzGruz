@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Дек 15 2025 г., 15:46
+-- Время создания: Фев 26 2026 г., 10:00
 -- Версия сервера: 5.7.24
 -- Версия PHP: 8.3.1
 
@@ -52,7 +52,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `client_id`, `vehicle_id`, `status`, `from_address`, `to_address`, `total_price`, `create_date`, `cargo_type`, `cargo_weight`, `cargo_description`, `cargo_volume`, `cargo_value`, `contact_person`, `contact_phone`, `notes`, `updated_at`) VALUES
-(2, 1, 3, 'Доставлен', 'Питер', 'Москва', 23000, '2025-12-05', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-12-15 15:40:03');
+(2, 1, 3, 'Доставлен', 'Питер', 'Москва', 23000, '2025-12-05', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-12-15 15:40:03'),
+(9, 3, 3, 'Отменен', 'Россия, Москва, Ворошилова', 'Америка, Нью-Йорк, Times Square', 52800, '2025-12-15', 'Строительные материалы', '20000', 'Перевозка материалов для строительства', '100', 100000, 'Жабн Дмитрий Иванович', '89163772300', 'Доставить вовремя', '2025-12-15 19:46:08');
 
 -- --------------------------------------------------------
 
@@ -64,6 +65,17 @@ CREATE TABLE `order_services` (
   `order_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `order_services`
+--
+
+INSERT INTO `order_services` (`order_id`, `service_id`) VALUES
+(9, 1),
+(9, 2),
+(9, 3),
+(9, 4),
+(9, 5);
 
 -- --------------------------------------------------------
 
@@ -115,7 +127,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `full_name`, `phone`, `role`, `created_at`) VALUES
 (1, 'Дмитрий', 'Minat0_Sensei', 'd9163772300@gmail.com', 'Жабин Дмитрий Иванович', '89163772300', 'admin', NULL),
-(3, 'хуй', '12345', 'dima@gmail.com', NULL, '89163772300', 'admin', NULL);
+(3, 'хуй', '12345', 'dima@gmail.com', 'Жабн Дмитрий Иванович', '89163772300', 'admin', NULL),
+(4, 'сергей', '12345678', 'lijghbaoefg@gmail.com', NULL, NULL, 'user', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,7 +150,7 @@ CREATE TABLE `vehicles` (
 
 INSERT INTO `vehicles` (`id`, `name`, `capacity`, `price`, `status`) VALUES
 (1, 'Газель', '1500', 20000, 'available'),
-(2, 'Бычок', '3,000 ', 24000, 'available'),
+(2, 'Бычок', '3000', 24000, 'available'),
 (3, 'Фура', '20,000 ', 45000, 'available'),
 (4, 'Рефрижератор', '15,000 ', 52000, 'available'),
 (7, 'Грузовик', '2000', 20000, 'available'),
@@ -188,7 +201,7 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `services`
@@ -200,7 +213,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `vehicles`
